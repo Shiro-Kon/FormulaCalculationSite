@@ -1,0 +1,26 @@
+.menu-item {
+    text-decoration: none;
+}
+.menu-item-active {
+    text-decoration: none;   
+}
+.select {
+    display: flex;
+    position: fixed;
+    background-color: rgb(34, 36, 35);
+    left: 50%;
+    width: 200px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    color: aliceblue;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0px 4px 4px rgb(48, 87, 110));
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+
+

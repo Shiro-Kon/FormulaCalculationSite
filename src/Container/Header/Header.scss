@@ -1,0 +1,14 @@
+.bar-header {
+   
+    background-color: #c8c3c3;
+    color: #fff; 
+    padding: 10px;
+    text-align: center;
+    filter: drop-shadow(0px 4px 7px rgb(137, 137, 170));
+}
+.menu{
+   display: flex;
+   position: fixed;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
