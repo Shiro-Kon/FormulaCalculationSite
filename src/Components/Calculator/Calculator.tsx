@@ -11,12 +11,13 @@ const Calculator: React.FC = () => {
 
   const calculateResult = () => {
     try {
-      const result = eval(input);
+      const result = new Function('return ' + input)();
       setInput(result.toString());
     } catch (error) {
       setInput('Помилка');
     }
   };
+  
 
   const clearInput = () => {
     setInput('');
@@ -41,8 +42,9 @@ const Calculator: React.FC = () => {
         deleteLastDigit();
       }
     },
-    [handleButtonClick, clearInput, deleteLastDigit]
+    [handleButtonClick, clearInput, deleteLastDigit, calculateResult]
   );
+  
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);

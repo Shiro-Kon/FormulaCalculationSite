@@ -81,7 +81,7 @@ const Pythagoras = () => {
       <input type='button' value='Обчислити' onClick={calculate} />
       <input type='button' value='Очистити' onClick={clearInputs} />
       
-      <div className='result'>{result}</div>
+      
     </div>
   );
 };
