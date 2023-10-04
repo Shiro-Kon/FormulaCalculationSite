@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import './Pythagoras.scss';
 
-type Props = {};
-
-const Pythagoras = (props: Props) => {
+const Pythagoras = () => {
   const [a, setA] = useState<number | null>(null);
   const [b, setB] = useState<number | null>(null);
   const [c, setC] = useState<number | null>(null);
@@ -17,14 +15,24 @@ const Pythagoras = (props: Props) => {
       setResult(`c = ${cValue}`);
     } else if (a !== null && c !== null) {
       const bSquared = c ** 2 - a ** 2;
-      const bValue = Math.sqrt(bSquared);
-      setB(bValue);
-      setResult(`b = ${bValue}`);
+      if (bSquared >= 0) {
+        const bValue = Math.sqrt(bSquared);
+        setB(bValue);
+        setResult(`b = ${bValue}`);
+      } else {
+        setResult('Неможливо обчислити b з заданими значеннями a та c');
+      }
     } else if (b !== null && c !== null) {
       const aSquared = c ** 2 - b ** 2;
-      const aValue = Math.sqrt(aSquared);
-      setA(aValue);
-      setResult(`a = ${aValue}`);
+      if (aSquared >= 0) {
+        const aValue = Math.sqrt(aSquared);
+        setA(aValue);
+        setResult(`a = ${aValue}`);
+      } else {
+        setResult('Неможливо обчислити a з заданими значеннями b та c');
+      }
+    } else {
+      setResult('Будь ласка, введіть два значення для обчислення');
     }
   };
 
@@ -69,9 +77,11 @@ const Pythagoras = (props: Props) => {
         value={c !== null ? c : ''}
         onChange={(e) => setC(parseFloat(e.target.value))}
       />
-     
+
       <input type='button' value='Обчислити' onClick={calculate} />
       <input type='button' value='Очистити' onClick={clearInputs} />
+      
+      <div className='result'>{result}</div>
     </div>
   );
 };

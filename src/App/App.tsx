@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { CssBaseline, Container, StyledEngineProvider } from '@mui/material';
 import Header from '../Container/Header/Header';
 import Home from '../Pages/Home/Home';

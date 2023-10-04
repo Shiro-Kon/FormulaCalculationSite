@@ -1,4 +1,3 @@
-// Calculator.tsx
 import React, { useState, useEffect, useCallback } from 'react';
 import Button from '../Button/Button';
 import './Calculator.scss';
@@ -12,7 +11,7 @@ const Calculator: React.FC = () => {
 
   const calculateResult = () => {
     try {
-      const result = Function(`return (${input})`)();
+      const result = eval(input);
       setInput(result.toString());
     } catch (error) {
       setInput('Помилка');
@@ -30,7 +29,7 @@ const Calculator: React.FC = () => {
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault(); 
+        event.preventDefault();
         if (event.key === ' ') {
           clearInput();
         } else {
@@ -54,7 +53,7 @@ const Calculator: React.FC = () => {
 
   return (
     <div className="calculator">
-        <input type="text" className='calc-input' value={input} readOnly />
+      <input type="text" className='calc-input' value={input} readOnly />
       <div className="button-grid">
         <div className="button-row">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, '/', '+', '-', '*'].map((label) => (
