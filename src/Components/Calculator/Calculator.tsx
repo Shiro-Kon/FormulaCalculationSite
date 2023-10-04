@@ -54,9 +54,7 @@ const Calculator: React.FC = () => {
 
   return (
     <div className="calculator">
-      <div className="input-window">
-        <input type="text" value={input} readOnly />
-      </div>
+        <input type="text" className='calc-input' value={input} readOnly />
       <div className="button-grid">
         <div className="button-row">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, '/', '+', '-', '*'].map((label) => (

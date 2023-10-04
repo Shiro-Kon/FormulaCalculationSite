@@ -1,4 +1,3 @@
-import Button from '@mui/material/Button'
 import { NavLink } from 'react-router-dom'
 import './MenuItem.scss'
 
@@ -8,7 +7,7 @@ type Props = {
 }
 const MenuItem = ({ to, children }: Props) => {
     return (
-        <Button color="inherit">
+        <button className='btn'>
             <NavLink
                 to={to}
                 className={({ isActive }) =>
@@ -17,7 +16,7 @@ const MenuItem = ({ to, children }: Props) => {
             >
                 {children}
             </NavLink>
-        </Button>
+        </button>
     )
 }
 export default MenuItem

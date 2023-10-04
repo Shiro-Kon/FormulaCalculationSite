@@ -1,6 +1,24 @@
 *{
     box-sizing: border-box;
 }
+.title{
+    font-size: 30px;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   margin: auto;
+}
+.sub-title{
+    font-size: 20px;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   margin: auto;
+   margin-bottom: 20px;
+
+}
 
 .box{
    display: flex;

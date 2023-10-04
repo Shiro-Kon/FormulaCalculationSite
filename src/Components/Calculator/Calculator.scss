@@ -19,22 +19,21 @@
   transform: translate(-50%, -50%);
   }
   
-  .input-window {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    padding: 10px;
-    filter: drop-shadow(2px 3px 3px rgb(105, 101, 101));
 
-  }
   
-  .input-window input {
+   .calc-input {
     width: 100%;
     height: 40px;
     font-size: 18px;
     border: none;
     outline: none;
-    text-align: center;    
+    text-align: center;   
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    padding: 10px;
+    color: black;
+    filter: drop-shadow(2px 3px 3px rgb(105, 101, 101));
   }
   
   .button-grid {
