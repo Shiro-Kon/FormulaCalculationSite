@@ -11,12 +11,14 @@ const Calculator: React.FC = () => {
 
   const calculateResult = () => {
     try {
-      const result = eval(input);
-      setInput(result.toString());
+      const result: string = evaluateExpression(input);
+      setInput(result);
     } catch (error) {
-      setInput('Помилка');
+      setInput('Error');
     }
   };
+  
+  
 
   const clearInput = () => {
     setInput('');
@@ -28,16 +30,13 @@ const Calculator: React.FC = () => {
 
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
-      if (event.key === 'Enter' || event.key === ' ') {
+      const key = event.key;
+      if (key === 'Enter' || key === ' ') {
         event.preventDefault();
-        if (event.key === ' ') {
-          clearInput();
-        } else {
-          calculateResult();
-        }
-      } else if (/^[0-9+\-*/.]/.test(event.key)) {
-        handleButtonClick(event.key);
-      } else if (event.key === 'Backspace') {
+        key === ' ' ? clearInput() : calculateResult();
+      } else if (/^[0-9+\-*/.]$/.test(key)) {
+        handleButtonClick(key);
+      } else if (key === 'Backspace') {
         deleteLastDigit();
       }
     },
@@ -50,6 +49,11 @@ const Calculator: React.FC = () => {
       window.removeEventListener('keydown', handleKeyPress);
     };
   }, [handleKeyPress]);
+
+  const evaluateExpression = (expression: string) => {
+
+    throw new Error('Evaluation not implemented');
+  };
 
   return (
     <div className="calculator">
