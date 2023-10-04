@@ -74,7 +74,7 @@ const CosineTheoreme = (props: Props) => {
         readOnly
       />
       <input type="button" value="Обчислити" onClick={calculateSide} />
-      <input type="button" value="Очистити" onClick={clearFields} />
+      <input type="button" className="btnclear" value="Очистити" onClick={clearFields} />
     </div>
   );
 };
