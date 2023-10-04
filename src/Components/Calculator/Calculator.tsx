@@ -12,7 +12,6 @@ const Calculator: React.FC = () => {
 
   const calculateResult = () => {
     try {
-      // Use a safer way to evaluate expressions to avoid security risks
       const result = Function(`return (${input})`)();
       setInput(result.toString());
     } catch (error) {
@@ -28,15 +27,14 @@ const Calculator: React.FC = () => {
     setInput((prevInput) => prevInput.slice(0, -1));
   };
 
-  // Listen for keyboard input
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault(); // Prevent the default behavior of the Enter key
+        event.preventDefault(); 
         if (event.key === ' ') {
-          clearInput(); // Clear input if the "Space" key is pressed
+          clearInput();
         } else {
-          calculateResult(); // Calculate result if the "Enter" key is pressed
+          calculateResult();
         }
       } else if (/^[0-9+\-*/.]/.test(event.key)) {
         handleButtonClick(event.key);

@@ -9,14 +9,13 @@ type Props = {}
 
 const Header = (props: Props) => {
     return (
-        <AppBar position="static" className="bar-header">
+        <header  className="bar-header">
             <Container>
                 <Toolbar className="toolbar">
                     <div className="menu"><Menu /></div>
-                    
                 </Toolbar>
             </Container>
-        </AppBar>
+        </header>
     )
 }
 
