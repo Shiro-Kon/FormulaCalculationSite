@@ -38,7 +38,7 @@ const Calculator: React.FC = () => {
         deleteLastDigit();
       }
     },
-    [handleButtonClick, clearInput, deleteLastDigit]
+    [handleButtonClick, clearInput, deleteLastDigit, calculateResult]
   );
   useEffect(() => {
     window.addEventListener("keydown", handleKeyPress);
