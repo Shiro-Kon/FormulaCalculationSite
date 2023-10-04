@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
-import Button from "../Button/Button";
-import "./Calculator.scss";
+import React, { useState, useEffect, useCallback } from 'react';
+import Button from '../Button/Button';
+import './Calculator.scss';
 
 const Calculator: React.FC = () => {
-  const [input, setInput] = useState<string>("");
+  const [input, setInput] = useState<string>('');
 
   const handleButtonClick = (value: string) => {
     setInput((prevInput) => prevInput + value);
@@ -11,15 +11,15 @@ const Calculator: React.FC = () => {
 
   const calculateResult = () => {
     try {
-      const result: string = evaluateExpression(input);
-      setInput(result);
+      const result = eval(input);
+      setInput(result.toString());
     } catch (error) {
-      setInput("Error");
+      setInput('Помилка');
     }
   };
 
   const clearInput = () => {
-    setInput("");
+    setInput('');
   };
 
   const deleteLastDigit = () => {
@@ -28,45 +28,41 @@ const Calculator: React.FC = () => {
 
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
-      const key = event.key;
-      if (key === "Enter" || key === " ") {
+      if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
-        key === " " ? clearInput() : calculateResult();
-      } else if (/^[0-9+\-*/.]$/.test(key)) {
-        handleButtonClick(key);
-      } else if (key === "Backspace") {
+        if (event.key === ' ') {
+          clearInput();
+        } else {
+          calculateResult();
+        }
+      } else if (/^[0-9+\-*/.]/.test(event.key)) {
+        handleButtonClick(event.key);
+      } else if (event.key === 'Backspace') {
         deleteLastDigit();
       }
     },
-    [handleButtonClick, clearInput, deleteLastDigit, calculateResult]
+    [handleButtonClick, clearInput, deleteLastDigit]
   );
+
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyPress);
+    window.addEventListener('keydown', handleKeyPress);
     return () => {
-      window.removeEventListener("keydown", handleKeyPress);
+      window.removeEventListener('keydown', handleKeyPress);
     };
   }, [handleKeyPress]);
 
-  const evaluateExpression = (expression: string) => {
-    throw new Error("Evaluation not implemented");
-  };
-
   return (
     <div className="calculator">
-      <input type="text" className="calc-input" value={input} readOnly />
+      <input type="text" className='calc-input' value={input} readOnly />
       <div className="button-grid">
         <div className="button-row">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, "/", "+", "-", "*"].map((label) => (
-            <Button
-              key={label}
-              label={label.toString()}
-              onClick={() => handleButtonClick(label.toString())}
-            />
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, '/', '+', '-', '*'].map((label) => (
+            <Button key={label} label={label.toString()} onClick={() => handleButtonClick(label.toString())} />
           ))}
         </div>
         <div className="button-row">
           <Button label="C" onClick={clearInput} />
-          <Button label="0" onClick={() => handleButtonClick("0")} />
+          <Button label="0" onClick={() => handleButtonClick('0')} />
           <Button label="=" onClick={calculateResult} />
           <Button label="←" onClick={deleteLastDigit} />
         </div>
